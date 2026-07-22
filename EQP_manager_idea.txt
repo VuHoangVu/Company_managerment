@@ -1,0 +1,44 @@
+Tôi làm kỹ thuật, tôi có 1 database
+Hãy làm 1 webapp bằng streamlit để tôi có thể quản lý mọi thông tin về thiết bị và dụng cụ gồm những chức năng trong memu chính như sau.
+cấu trúc code:
+- app.py sẽ gọi các hàm vào dùng
+- các hàm chức năng sẽ trong 1 file
+- file thông tin server để kết nối 1 file
+- tùy chỉnh CSS 1 file
+- hàm giao tiếp với database 1 file
+- khi nhấn F5 chỉ làm mới dữ liệu ở trang hiện tại không nhảy sang trang khác
+I.Postgresql:
+- mane: PostgreSQL 18; 
+- port 5432 ,192.168.61.103
+- user: postgres
+- pass: admin123
+a.tạo các bảng:
+- user: lưu thong tin tài khoản
+- role: lưu phân quyền theo thứ tự từ lớn đến bé "admin" toàn quyền, "manager" chỉ phê duyệt, "team leader"chỉ phê duyệt, "leader" phê duyệt, thêm mới hoặc xóa EQP và tool, tạo checksheet, maintenance, "technician" upload tài liệu, thực hiện công việc checksheet và maintenance
+- doccument: lưu các tài liệu file PDF, excel, powerpoint
+- epqlist: lưu tên thiết bị, mã quản lý, số lượng, tình trạng, ghi chú
+- toollist: lưu tên tool, mã quản lý, số lượng, ghi chú
+- eqpchecksheet: lưu lịch sử checkshet từng giá trị của các thiết bị hàng ngày
+- eqpmaintenance: lưu lịch sử bảo dưỡng của các thiết bị địnhh kỳ
+
+I. Đăng Nhập, đăng xuất:
+- gồm đăng nhập và tạo tài khoản, quên mật khẩu
+- thông tin tài khoản và mật khẩu được lưu trong database postgresql, mật khẩu được hash, có kèm thời gian khi tạo tài khoản
+- tài khoản có phân quyền khi đăng ký mới sẽ có 1 thông báo đến admin để duyệt tài khoản và chọn role lưu trong 1 bảng ở database tương ứng với các quyền, khi được duyệt tài khoản mới được phép đăng nhập 
+- khi bấm quên mật khẩu thì sẽ có 1 thông báo được gửi đến admin để xác nhận, khi admin xác nhận, mật khẩu mặc định của user đó sẽ là 1
+- Khi đã đăng nhập thì nhấn f5 không được logout. nếu nhấn Logout thì mới trở về màn hình đăng nhập
+
+II. EQP Manager
+- gồm những mục con là Overview, EQP list, troubleshooting
+- Overview sẽ chia màn hình ra những ô vuông bo khung đại diện cho những thiết bị có trong EQP list, sẽ có nền màu xanh-vàng-đỏ tương ứng với tình trạng máy được config và khi máy nào có lỗi được đẩy lên bằng troubleshooting thì sẽ chuyển màu đỏ, nếu hết troubleshooting sẽ chuyển về màu xanh
+- EQP list: có chức năng thêm và xóa thiết bị, thêm mới sẽ nhập tên, mã, số lượng, kèm chọn up hình ảnh, tất cả lưu vào database, hiển thị danh sách thiết bị kèm ảnh
+- Checksheet: có mục tạo mới các checkshet với tài khoản leader, các tài khoản technician khi đăng nhập sẽ có mục quét qr, khi quét vào mã của thiết bị sẽ hiện ra checksheet tương ứng, khi hoàn thành checksheet nhấn OK, sẽ gửi thông báo phê duyệt lên leader và manager.
+- Maintenance: tương tự như checksheet
+- troubleshooting: dạng bảng, có chức năng thêm lỗi, chọn loại máy được lưu trong database và viết tên lỗi, danh sách sẽ hiển thị ưu tiên những lỗi chưa được giải quyết lên trên, vẫn có bộ lọc để có thể lọc tùy ý. khi ai đó khắc phục lỗi thì sẽ có thể nhấn hoàn thành để chuyển trạng thái và không còn ưu tiên,
+- tất cả các mục con trong EQP đều có chức năng trade, nhập mã thiết bị và chọn ngày để xem lại lịch sử.
+
+III. Tool manager:
+- Gồm các mục con Tool list: giống với EQP list
+
+IV. Oder:
+- 

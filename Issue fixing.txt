@@ -1,0 +1,13 @@
+#1: Cannot run enviroment:
+- Create pycache of streamlit: 
+#2: Cannot install lib by requirement:
+- Run uv pip install for each lib by lib.
+#3: Login page layout place ontop create and passrecovery windows
+- Re layout menu
+#4: Cannot SELECT password hashed in database
+- not use excute_query because fetch=False will be value return alway is "None"
+- need use fetch_query
+#5: F5 reload login page and account logout automation.
+- Add token and cokkies
+#6: Another device login but, just only one acount redy on time
+- 

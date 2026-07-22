@@ -1,0 +1,11 @@
+/* Giữ màu nền theo trạng thái thiết bị */
+.eqp-green { background-color: #4CAF50; }
+.eqp-yellow { background-color: #FFEB3B; }
+.eqp-red { background-color: #F44336; }
+
+/* Tùy chỉnh nút logout */
+.logout-btn {
+    background-color: #d9534f;
+    color: white;
+    border-radius: 5px;
+}
